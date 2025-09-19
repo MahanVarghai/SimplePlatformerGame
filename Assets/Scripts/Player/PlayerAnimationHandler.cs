@@ -1,0 +1,63 @@
+using UnityEngine;
+
+public class PlayerAnimationHandler : MonoBehaviour
+{
+    private Animator anim;
+    private SpriteRenderer sr;
+
+    public bool IsGrounded { get; set; }
+    public int MoveingDirection { get; set; }
+    public float VelocityY { get; set; }
+
+    private void Awake()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+    }
+        void Update()
+    {
+        runAnimationHandler();
+        jumpAndFallAnimtionHandler();
+    }
+    private void runAnimationHandler()
+    {
+        if (MoveingDirection != 0)
+        {
+            anim.SetBool(TagManagement.PLAYET_RUN_ANIMTION_BOOL, true);
+            anim.SetBool(TagManagement.PLAYER_IDLE_ANIMATION_BOOL, false);
+            sr.flipX = MoveingDirection < 0;
+
+        }
+        else
+        {
+            anim.SetBool(TagManagement.PLAYET_RUN_ANIMTION_BOOL, false);
+            anim.SetBool(TagManagement.PLAYER_IDLE_ANIMATION_BOOL, true);
+        }
+
+    }
+    private void jumpAndFallAnimtionHandler()
+    {
+        if (VelocityY == 0)
+        {
+            anim.SetBool(TagManagement.PLAYER_JUMP_ANIMATION_BOOL, false);
+            anim.SetBool(TagManagement.PLAYER_FALL_ANIMATION_BOOL, false);
+        }
+        else
+        {
+            if (VelocityY < 0)
+            {
+                anim.SetBool(TagManagement.PLAYER_FALL_ANIMATION_BOOL, true);
+                anim.SetBool(TagManagement.PLAYER_JUMP_ANIMATION_BOOL, false);
+            }
+            else
+            {
+                anim.SetBool(TagManagement.PLAYER_JUMP_ANIMATION_BOOL, true);
+                anim.SetBool(TagManagement.PLAYER_FALL_ANIMATION_BOOL, false);
+            }
+            anim.SetBool(TagManagement.PLAYER_IDLE_ANIMATION_BOOL, false);
+            anim.SetBool(TagManagement.PLAYET_RUN_ANIMTION_BOOL, false);
+        }
+        
+    }
+
+}
