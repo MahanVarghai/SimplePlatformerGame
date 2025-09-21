@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float moveInput;
     private bool jumpInput;
+    private bool attackInput;
 
     private void Awake()
     {
@@ -20,37 +21,50 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        getMoveInput();
-        getJumpInput();
-        jumpHandler();
-
-        setAnimationHandler();
+        GetMoveInput();
+        GetJumpInput();
+        GetAttackInput();
+        JumpHandler();
+        AttackHandler();
+        SetAnimationHandler();
     }
     private void FixedUpdate()
     {
-        moveHandler();
+        MoveHandler();
     }
-    private void getMoveInput()
+    private void GetMoveInput()
     {
         moveInput = Input.GetAxisRaw("Horizontal");
     }
-   private void getJumpInput()
+   private void GetJumpInput()
     {
         jumpInput = Input.GetButtonDown("Jump") && Mathf.Abs(rb.linearVelocityY) < 0.001f;
     }
-    private void setAnimationHandler()
+    private void GetAttackInput()
+    {
+        attackInput = Input.GetButtonDown("Fire1");
+    }
+    private void SetAnimationHandler()
     {
         paHandler.MoveingDirection = (int)moveInput;
         paHandler.VelocityY = rb.linearVelocityY;
+        paHandler.Attacking1 = attackInput;
     }
-    private void moveHandler()
+    private void MoveHandler()
     {
         rb.linearVelocityX = moveInput * speed;
     }
-    private void jumpHandler()
+    private void JumpHandler()
     {
         if (jumpInput)
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+    }
+    private void AttackHandler()
+    {
+        if (attackInput)
+        {
+            Debug.Log("don't forget to commplit the attckHandler");
+        }
     }
 }
 
