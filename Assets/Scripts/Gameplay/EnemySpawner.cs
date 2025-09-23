@@ -14,10 +14,9 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
-
         while (true)
         {
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(5f);
             Instantiate(enemyList[Random.Range(0, enemyList.Count)]);
         }
     }

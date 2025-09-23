@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyAnimationHandler : MonoBehaviour
 {
     private Animator anim;
-    public bool IdleAnimation { get; set; } = false;
+    public bool Walking { get; set; } = false;
 
     private void Awake()
     {
@@ -12,22 +12,21 @@ public class EnemyAnimationHandler : MonoBehaviour
 
     private void Update()
     {
-        IdleAnimationHandler();
+        WalkAnimationHandler();
     }
+
+
+
     public void WalkAnimationHandler()
     {
-        anim.SetBool(TagManagement.ENEMY_WALK_ANIMATION_BOOL, true);
-    }
-    public void IdleAnimationHandler()
-    {
-        if (IdleAnimation)
+        if (Walking)
         {
-            anim.SetBool(TagManagement.ENEMY_WALK_ANIMATION_BOOL, false);
-            anim.SetBool(TagManagement.ENEMY_IDLE_ANIMATION_BOOL, true);
+            anim.SetBool(TagManagement.ENEMY_WALK_ANIMATION_BOOL, true);
+            anim.SetBool(TagManagement.ENEMY_IDLE_ANIMATION_BOOL, false);
         }
         else
         {
-            anim.SetBool(TagManagement.ENEMY_IDLE_ANIMATION_BOOL, false);
+            anim.SetBool(TagManagement.ENEMY_WALK_ANIMATION_BOOL, false);
             anim.SetBool(TagManagement.ENEMY_IDLE_ANIMATION_BOOL, true);
         }
     }

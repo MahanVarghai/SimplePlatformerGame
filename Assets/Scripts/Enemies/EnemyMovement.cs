@@ -12,6 +12,8 @@ public class EnemyMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        eHandler = GetComponent<EnemyAnimationHandler>();
+
         playerLocation = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -24,15 +26,18 @@ public class EnemyMovement : MonoBehaviour
     {
         if (isRisigAnimationDone)
         {
-            if(Vector3.Distance(transform.position, playerLocation.position) > 0.5f)
+            if(Vector3.Distance(transform.position, playerLocation.position) > 3f)
             {
-                rb.linearVelocityX = Vector3.left.x * speed; return;
-                eHandler.IdleAnimation = false;
+
+                rb.linearVelocityX = Vector3.left.x * speed;
+                eHandler.Walking = true;
+
             }
             else
             {
                 rb.linearVelocityX = 0f;
-                eHandler.IdleAnimation = true;
+                eHandler.Walking = false;
+
             }
 
         }
