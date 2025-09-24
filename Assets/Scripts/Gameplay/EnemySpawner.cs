@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> enemyList = new List<GameObject>();
+    private GameObject enemy;
 
     private void Start()
     {
@@ -17,7 +18,8 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(5f);
-            Instantiate(enemyList[Random.Range(0, enemyList.Count)]);
+            enemy = Instantiate(enemyList[Random.Range(0, enemyList.Count)]);
+            enemy.transform.position = transform.position;
         }
     }
 }
