@@ -10,8 +10,11 @@ public static class TagManagement
     //Enemy Animation Parameters
     public static string ENEMY_WALK_ANIMATION_BOOL = "Walk";
     public static string ENEMY_IDLE_ANIMATION_BOOL = "Idle";
+    public static string ENEMY_DEATH_ANIMATION_TRIGGER = "Death";
+    public static string ENEMY_TAKE_DAMAGE_ANIMATION_TRIGGER = "Take Damage";
 
     //Enemy Tags
     public static string ENEMY_TAG = "Enemy";
+
 
 }

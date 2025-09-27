@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float jumpForce = 7f;
 
     private Rigidbody2D rb;
-    private PlayerAnimationHandler paHandler;
+    private PlayerAnimationHandler playerAnimationHandler;
 
     private float moveInput;
     private bool jumpInput;
@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        paHandler = GetComponent<PlayerAnimationHandler>();
+        playerAnimationHandler = GetComponent<PlayerAnimationHandler>();
     }
     private void Update()
     {
@@ -46,9 +46,9 @@ public class PlayerMovement : MonoBehaviour
     }
     private void SetAnimationHandler()
     {
-        paHandler.MoveingDirection = (int)moveInput;
-        paHandler.VelocityY = rb.linearVelocityY;
-        paHandler.Attacking1 = attackInput;
+        playerAnimationHandler.MoveingDirection = (int)moveInput;
+        playerAnimationHandler.VelocityY = rb.linearVelocityY;
+        playerAnimationHandler.Attacking1 = attackInput;
     }
     private void MoveHandler()
     {

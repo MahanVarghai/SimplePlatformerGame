@@ -6,13 +6,13 @@ public class EnemyMovement : MonoBehaviour
     private float speed = 5f;
     private Transform playerLocation;
     private Rigidbody2D rb;
-    private EnemyAnimationHandler eHandler;
+    private EnemyAnimationHandler enemyAnimationHandler;
     private bool isRisigAnimationDone = false;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        eHandler = GetComponent<EnemyAnimationHandler>();
+        enemyAnimationHandler = GetComponent<EnemyAnimationHandler>();
 
         playerLocation = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -30,13 +30,13 @@ public class EnemyMovement : MonoBehaviour
             {
 
                 rb.linearVelocityX = Vector3.left.x * speed;
-                eHandler.Walking = true;
+                enemyAnimationHandler.Walking = true;
 
             }
             else
             {
                 rb.linearVelocityX = 0f;
-                eHandler.Walking = false;
+                enemyAnimationHandler.Walking = false;
 
             }
 
