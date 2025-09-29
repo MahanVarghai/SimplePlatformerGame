@@ -4,6 +4,7 @@ public class EnemyAnimationHandler : MonoBehaviour
 {
     private Animator anim;
     public bool Walking { get; set; } = false;
+    public bool Attacking { get; set; } = false;
     public bool Dead { get; set; } = false;
     public  bool TakeDamage { get; set; } = false;
 
@@ -16,6 +17,7 @@ public class EnemyAnimationHandler : MonoBehaviour
     {
         WalkAnimationHandler();
         DeathAnimationHandler();
+        AttackAnimationHandler();
         TakeDamageAnimationHandler();
     }
 
@@ -37,6 +39,12 @@ public class EnemyAnimationHandler : MonoBehaviour
         if(Dead) 
             anim.SetTrigger(TagManagement.ENEMY_DEATH_ANIMATION_TRIGGER);
         Dead = false;
+    }
+    private void AttackAnimationHandler()
+    {
+        if (Attacking)
+            anim.SetTrigger(TagManagement.ENEMY_ATTACK_ANIMATION_BOOL);
+        
     }
     private void TakeDamageAnimationHandler()
     {

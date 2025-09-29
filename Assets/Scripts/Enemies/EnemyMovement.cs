@@ -31,12 +31,14 @@ public class EnemyMovement : MonoBehaviour
 
                 rb.linearVelocityX = Vector3.left.x * speed;
                 enemyAnimationHandler.Walking = true;
+                enemyAnimationHandler.Attacking = false;
 
             }
             else
             {
                 rb.linearVelocityX = 0f;
                 enemyAnimationHandler.Walking = false;
+                enemyAnimationHandler.Attacking = true;
 
             }
 
