@@ -20,6 +20,7 @@ public class Health : MonoBehaviour
         if(health <= 0)
         {
             animationHandler.Dead = true;
+            UiBehavior.Instance.GameOverPanelEnable();
             return;
         }
         else
