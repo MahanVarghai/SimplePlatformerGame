@@ -1,17 +1,8 @@
 using UnityEngine;
 
-public class EnemyAnimationHandler : MonoBehaviour
+public class EnemyAnimationHandler : AnimationHandler
 {
-    private Animator anim;
-    public bool Walking { get; set; } = false;
     public bool Attacking { get; set; } = false;
-    public bool Dead { get; set; } = false;
-    public  bool TakeDamage { get; set; } = false;
-
-    private void Awake()
-    {
-        anim = GetComponent<Animator>();
-    }
 
     private void Update()
     {
@@ -21,7 +12,7 @@ public class EnemyAnimationHandler : MonoBehaviour
         TakeDamageAnimationHandler();
     }
 
-    private void WalkAnimationHandler()
+    protected override void WalkAnimationHandler()
     {
         if (Walking)
         {
@@ -34,19 +25,17 @@ public class EnemyAnimationHandler : MonoBehaviour
             anim.SetBool(TagManagement.ENEMY_IDLE_ANIMATION_BOOL, true);
         }
     }
-    private void DeathAnimationHandler()
+    protected override void DeathAnimationHandler()
     {
         if(Dead) 
             anim.SetTrigger(TagManagement.ENEMY_DEATH_ANIMATION_TRIGGER);
         Dead = false;
     }
-    private void AttackAnimationHandler()
+    protected override void AttackAnimationHandler()
     {
-        if (Attacking)
-            anim.SetTrigger(TagManagement.ENEMY_ATTACK_ANIMATION_BOOL);
-        
+        anim.SetBool(TagManagement.ENEMY_ATTACK_ANIMATION_BOOL, Attacking);      
     }
-    private void TakeDamageAnimationHandler()
+    protected override void TakeDamageAnimationHandler()
     {
         if (TakeDamage)
             anim.SetTrigger(TagManagement.ENEMY_TAKE_DAMAGE_ANIMATION_TRIGGER);

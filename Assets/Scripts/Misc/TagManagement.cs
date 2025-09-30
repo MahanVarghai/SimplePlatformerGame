@@ -6,6 +6,8 @@ public static class TagManagement
     public static string PLAYER_JUMP_ANIMATION_BOOL = "Jump";
     public static string PLAYER_FALL_ANIMATION_BOOL = "Fall";
     public static string PLAYER_ATTACK1_ANIMATUION_TRIGGER = "Attack1";
+    public static string PLAYER_TAKE_DAMAGE_ANIMATION_TRIGGER = "Take Damage";
+    public static string PLAYER_DEATH_ANIMATION_TRIGGER = "Death";
 
     //Enemy Animation Parameters
     public static string ENEMY_WALK_ANIMATION_BOOL = "Walk";
@@ -14,8 +16,9 @@ public static class TagManagement
     public static string ENEMY_ATTACK_ANIMATION_BOOL = "Attack";
     public static string ENEMY_TAKE_DAMAGE_ANIMATION_TRIGGER = "Take Damage";
 
-    //Enemy Tags
+    //Tags
     public static string ENEMY_TAG = "Enemy";
+    public static string PLAYER_TAG = "Player";
 
 
 }

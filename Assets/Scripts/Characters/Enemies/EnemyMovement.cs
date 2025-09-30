@@ -26,7 +26,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (isRisigAnimationDone)
         {
-            if(Vector3.Distance(transform.position, playerLocation.position) > 3f)
+            if(Vector3.Distance(transform.position, playerLocation.position) > 2.5f)
             {
 
                 rb.linearVelocityX = Vector3.left.x * speed;
