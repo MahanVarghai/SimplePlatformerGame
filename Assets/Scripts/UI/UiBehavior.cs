@@ -15,7 +15,6 @@ public class UiBehavior : MonoBehaviour
     }
     public void GameOverPanelEnable()
     {
-        Debug.Log("hello");
         gameOverCanvas.enabled = true;
     }
     public void ResetTheScene()

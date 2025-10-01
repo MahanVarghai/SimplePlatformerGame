@@ -3,7 +3,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    private int health = 100;
+    protected int health = 100;
 
     private AnimationHandler animationHandler;
     private void Start()
@@ -14,14 +14,12 @@ public class Health : MonoBehaviour
             animationHandler = GetComponent<EnemyAnimationHandler>();
 
     }
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         health -= damage;
         if(health <= 0)
         {
             animationHandler.Dead = true;
-            UiBehavior.Instance.GameOverPanelEnable();
-            return;
         }
         else
         {
