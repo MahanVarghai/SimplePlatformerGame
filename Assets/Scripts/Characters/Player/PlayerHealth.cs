@@ -21,7 +21,7 @@ public class PlayerHealth: MonoBehaviour
                 GetComponent<Transform>().
                 position = new Vector3(1000, 1000, 0);
             GetComponent<Collider2D>().enabled = false;
-            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         }
         else
         {
