@@ -1,14 +1,36 @@
 ﻿using UnityEngine;
 
-public class PlayerHealth: Health
+public class PlayerHealth: MonoBehaviour
 {
-    public override void TakeDamage(int damage)
+    [SerializeField]
+    private int health = 100;
+
+    private AnimationHandler playerAnimationHandler;
+    private void Start()
     {
-        base.TakeDamage(damage);
+        playerAnimationHandler = GetComponent<PlayerAnimationHandler>();
+    }
+    public void TakeDamage(int damage)
+    {
+
+        health -= damage;
         if (health <= 0)
         {
-            Debug.Log("fuck");
-            UiBehavior.Instance.GameOverPanelEnable();
+            playerAnimationHandler.Dead = true;
+            transform.Find("Target For Enemeis").
+                GetComponent<Transform>().
+                position = new Vector3(1000, 1000, 0);
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         }
+        else
+        {
+            playerAnimationHandler.TakeDamage = true;
+        }
+        
+    }
+    public void PlayerDeath()
+    {
+        UiBehavior.Instance.GameOverPanelEnable();
     }
 }

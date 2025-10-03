@@ -14,7 +14,7 @@ public class EnemyMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         enemyAnimationHandler = GetComponent<EnemyAnimationHandler>();
 
-        playerLocation = GameObject.FindGameObjectWithTag("Player").transform;
+        playerLocation = GameObject.FindGameObjectWithTag("Target For Enemeis").transform;
     }
 
     private void FixedUpdate()
