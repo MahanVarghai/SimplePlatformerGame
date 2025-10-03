@@ -17,6 +17,8 @@ public class EnemyHealth : MonoBehaviour
         if(health <= 0)
         {
             enemyAnimationHandler.Dead = true;
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         }
         else
         {
