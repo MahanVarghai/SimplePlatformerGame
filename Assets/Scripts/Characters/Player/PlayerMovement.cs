@@ -6,8 +6,6 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 5f;
     [SerializeField]
     private float jumpForce = 7f;
-    [SerializeField]
-    private float vel;
 
     private Rigidbody2D rb;
     private PlayerAnimationHandler playerAnimationHandler;
@@ -49,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     private void SetAnimationHandler()
     {
         playerAnimationHandler.MoveingDirection = (int)moveInput;
-        vel = playerAnimationHandler.VelocityY = rb.linearVelocityY;
+        playerAnimationHandler.VelocityY = rb.linearVelocityY;
         playerAnimationHandler.Attacking1 = attackInput;
     }
     private void MoveHandler()
