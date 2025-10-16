@@ -10,7 +10,7 @@ public class PlayerJumpState : PlayerBaseState
     public override void EnterState() 
     {
         Debug.Log("Entered Jump State");
-        ctx.isGrouped = false;
+        ctx.isGrounded = false;
         ctx.animator.Play("PlayerJump");
         ctx.rb.AddForce(new Vector2(0, ctx.jumpForce), ForceMode2D.Impulse);
     }

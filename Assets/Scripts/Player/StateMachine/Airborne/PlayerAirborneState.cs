@@ -11,7 +11,7 @@ public class PlayerAirborneState : PlayerBaseState
     public override void EnterState() 
     {
         Debug.Log("Entered Airborne State");
-        ctx.isGrouped = false;
+        ctx.isGrounded = false;
     }
     public override void ExitState() 
     {
@@ -31,7 +31,7 @@ public class PlayerAirborneState : PlayerBaseState
     }
     public override void CheckSwitchState()
     {
-        if(ctx.isGrouped)
+        if(ctx.isGrounded)
         {
             SwitchState(factory.Grounded());
         }

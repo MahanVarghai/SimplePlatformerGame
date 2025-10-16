@@ -33,13 +33,13 @@ public class PlayerStateFactory
         return new PlayerJumpState(_context, this);
     }
 
-    internal PlayerBaseState Fall()
+    public PlayerBaseState Fall()
     {
         return new PlayerFallState(_context, this);
     }
 
-    internal PlayerBaseState GroundedAttack()
+    public PlayerBaseState GroundedAttack()
     {
-        return new PlayerGroundAttackState(_context, this);
+        return new PlayerAttackState(_context, this);
     }
 }

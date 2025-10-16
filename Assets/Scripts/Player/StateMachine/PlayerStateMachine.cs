@@ -14,15 +14,15 @@ public class PlayerStateMachine : MonoBehaviour
 
     // jump variables
     public bool isJumpPressed = false;
-    public bool isGrouped = false;
+    public bool isGrounded = false;
 
     // damage variables
     public bool isAttackPressed = false;
+    public float attackingDelay = 0f;
 
     //state variables
     public PlayerBaseState currentState;
     public PlayerStateFactory states;
-
 
     // Awake is called earlier than Start in Unity's event life cycle
     private void Awake()
@@ -30,7 +30,6 @@ public class PlayerStateMachine : MonoBehaviour
         // initially set reference variables
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-
 
         // setup state
         states = new PlayerStateFactory(this);
@@ -44,7 +43,6 @@ public class PlayerStateMachine : MonoBehaviour
         moveDirection = Input.GetAxisRaw("Horizontal");
         isJumpPressed = Input.GetButtonDown("Jump");
         isAttackPressed = Input.GetButtonDown("Fire1");
-
         currentState.UpdateStates();
 
     }
@@ -56,7 +54,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrouped = true;
+            isGrounded = true;
         }
     }
 }

@@ -11,7 +11,7 @@ internal class PlayerFallState : PlayerBaseState
     public override void EnterState()
     {
         Debug.Log("Entered Fall State");
-        ctx.isGrouped = false;
+        ctx.isGrounded = false;
         ctx.animator.Play("PlayerFall");
     }
     public override void ExitState()
