@@ -4,6 +4,7 @@ public class PlayerStateMachine : MonoBehaviour
     // reference variables
     public Animator animator;
     public Rigidbody2D rb;
+    public GameObject damageCollider;
     public float currentHealth = 100;
     public float damageAmounts = 25;
     public float moveSpeed = 5f;

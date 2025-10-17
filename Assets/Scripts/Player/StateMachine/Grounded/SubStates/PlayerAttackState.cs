@@ -43,7 +43,10 @@ public class PlayerAttackState : PlayerBaseState
                     case 2:
                         ctx.animator.Play("PlayerAttack2"); break;
                     case 3: 
-                        ctx.animator.Play("PlayerAttack3"); break;
+                        ctx.animator.Play("PlayerAttack3"); 
+                        ctx.rb.AddForce(new Vector2(ctx.transform.localScale.x * 10f, 0), ForceMode2D.Impulse);
+                        break;
+                        
                 }
                 isComboSuccessful = false;
             }
